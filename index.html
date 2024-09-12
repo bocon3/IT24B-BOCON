@@ -8,3 +8,35 @@
     <h1>Hello</h1>
 </body>
 </html></html>
+
+
+BOOKING
+
+
+class Booking {
+  constructor(customerName, roomNumber, checkInDate, checkOutDate) {
+    this.customerName = customerName;
+    this.roomNumber = roomNumber;
+    this.checkInDate = new Date(checkInDate);
+    this.checkOutDate = new Date(checkOutDate);
+  }
+
+  calculateDuration() {
+    const duration = (this.checkOutDate - this.checkInDate) / (1000 * 60 * 60 * 24);
+    return Math.round(duration); 
+  }
+
+  displayBookingDetails() {
+    return `Booking Details:
+    Customer Name: ${this.customerName}
+    Room Number: ${this.roomNumber}
+    Check-In Date: ${this.checkInDate.toDateString()}
+    Check-Out Date: ${this.checkOutDate.toDateString()}
+    Duration: ${this.calculateDuration()} days`;
+  }
+}
+
+const booking1 = new Booking('John Doe', '10', '2024-09-10', '2024-09-15');
+
+
+console.log(booking1.displayBookingDetails());
